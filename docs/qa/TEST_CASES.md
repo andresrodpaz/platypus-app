@@ -429,4 +429,3 @@
 **Total Test Cases**: 27
 **Critical**: 5 | **High**: 9 | **Medium**: 12 | **Low**: 1
 
-**The platypus has reviewed these test cases and finds them... acceptable. Barely.**
