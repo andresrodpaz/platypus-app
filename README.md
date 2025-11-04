@@ -1,387 +1,317 @@
-# Platypus QA Lab 🦦
+# 🦦 Platypus QA Lab
 
-> A platypus, an API, and a QA mission walk into a bar...
+<div align="center">
 
-**Platypus QA Lab** is a comprehensive web application for testing public APIs, managing test suites, mocking endpoints, and collaborating with your QA team. Get hilariously accurate feedback powered by AI. Because if the API fails, at least we can laugh together.
+**Test APIs. Get sarcastic feedback. Laugh together when things break.**
 
-## Features
+A full-featured API testing platform powered by Grok AI that makes quality assurance actually fun.
 
-### Core Features
-- **API Playground**: Test real public APIs with instant feedback and AI-powered analysis
-- **Bug Reporter**: Document bugs with professional severity ratings and sarcastic commentary
-- **QA Analytics**: Visualize testing metrics with beautiful interactive charts
-- **AI Analysis**: Get witty, context-aware commentary on every API response
+[Features](#-features) • [Quick Start](#-quick-start) • [Documentation](#-documentation) • [Tech Stack](#-tech-stack)
 
-### Advanced Features
-- **Test Suites & Collections**: Group multiple requests and execute them sequentially
-- **API Mocking & Stubbing**: Create mock endpoints to simulate any API response with custom latency
-- **Advanced Assertions**: Validate responses with schema matching, regex, and performance thresholds
-- **Scheduled Tests & Monitoring**: Automate testing with cron jobs and health checks
-- **Email Notifications**: Get alerted when scheduled tests fail with beautiful HTML emails
-- **Team Collaboration**: Assign bugs, comment on issues, and track team activity
-- **Enhanced Reporting**: Export detailed QA reports with trend analysis
-- **API Documentation Generator**: Auto-generate OpenAPI specs, Postman collections, and code examples
+---
 
-### Authentication & Roles
-- **Supabase Auth**: Secure login and signup with email/password
-- **User Roles**: Tester, Lead QA, and Admin roles with different permissions
-- **Personal & Team History**: Track individual and team-wide testing metrics
+</div>
 
-## Tech Stack
+## 🎯 What is this?
 
-| Area | Technology |
-|------|------------|
-| Framework | Next.js 16 + TypeScript |
-| UI | Tailwind CSS v4 + shadcn/ui + Framer Motion |
-| Database | Supabase (PostgreSQL) |
-| Auth | Supabase Auth with RLS |
-| Email | Resend |
-| Charts | Recharts |
-| Testing (API) | Jest + Supertest |
-| Testing (UI) | Playwright (TypeScript) |
-| CI/CD | GitHub Actions |
-| Deployment | Vercel |
+I got tired of boring API testing tools, so I built this. **Platypus QA Lab** is a personal project that combines serious testing capabilities with AI-powered humor. 
 
-## Getting Started
+Test any API, organize your tests into suites, set up automated monitoring, mock endpoints, collaborate with your team, and get witty commentary from Grok AI on every response. Because if your API is going to fail, at least the feedback should be entertaining.
 
-### Prerequisites
+## ✨ Features
 
-- Node.js 20+
-- npm or yarn
-- Supabase account (optional, works with localStorage)
-- Resend account (optional, for email notifications)
+<table>
+<tr>
+<td width="50%">
+
+### 🎮 Core Testing
+- **API Playground** - Test any endpoint instantly
+- **Smart Analysis** - Grok AI reviews every response
+- **Test Suites** - Organize multiple requests
+- **Assertions** - Schema validation, regex, performance checks
+- **Mock Server** - Simulate any API response
+
+</td>
+<td width="50%">
+
+### 🤖 Automation
+- **Scheduled Tests** - Cron-based test execution
+- **Email Alerts** - Get notified when tests fail
+- **Health Checks** - Monitor API uptime
+- **CI/CD Ready** - GitHub Actions included
+- **Auto Reports** - Generate test reports automatically
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 👥 Collaboration
+- **Bug Tracker** - Report and track issues
+- **Team Dashboard** - See what everyone is testing
+- **Comments & Threads** - Discuss bugs together
+- **Role System** - Tester, QA Lead, Admin roles
+- **Activity Feed** - Real-time team updates
+
+</td>
+<td width="50%">
+
+### 📊 Analytics
+- **Visual Metrics** - Beautiful interactive charts
+- **Trend Analysis** - Track quality over time
+- **Export Reports** - PDF and CSV exports
+- **API Docs Generator** - Auto-create OpenAPI specs
+- **Performance Insights** - Response time tracking
+
+</td>
+</tr>
+</table>
+
+## 🚀 Quick Start
 
 ### Installation
 
-1. Clone the repository:
-\`\`\`bash
-git clone https://github.com/yourusername/platypus-qa-lab.git
-cd platypus-qa-lab
-\`\`\`
+```bash
+# Clone the repo
+git clone https://github.com/andresrodpaz/platypus-app.git
+cd platypus-app
 
-2. Install dependencies:
-\`\`\`bash
+# Install dependencies
 npm install
-\`\`\`
 
-3. Set up environment variables (optional for Supabase):
-\`\`\`bash
-cp .env.example .env.local
-\`\`\`
+# Run it!
+npm run dev
+```
 
-Add your Supabase credentials:
-\`\`\`
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+Open **http://localhost:3000** and start testing. That's it! 🎉
+
+All data is stored locally in your browser - no database setup required.
+
+### Optional: Full Setup with Database
+
+Want persistence and team features? Add Supabase:
+
+<details>
+<summary>📝 Click to expand setup instructions</summary>
+
+1. **Create `.env.local`:**
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-\`\`\`
+RESEND_API_KEY=re_your_api_key  # Optional, for emails
+```
 
-4. (Optional) Add Resend API key for email notifications:
-\`\`\`
-RESEND_API_KEY=re_your_resend_api_key
-\`\`\`
+2. **Run database migrations:**
 
-See [docs/EMAIL_SETUP.md](docs/EMAIL_SETUP.md) for detailed email configuration.
+Open your Supabase SQL Editor and run these scripts in order:
+- `scripts/001_create_tables.sql`
+- `scripts/create-test-auth-users.sql`
 
-5. Run database migrations (if using Supabase):
-\`\`\`bash
-# Execute the SQL scripts in /scripts folder in your Supabase SQL editor
-# Start with: scripts/001_create_tables.sql
-# Then run: scripts/create-test-auth-users.sql (for test users)
-\`\`\`
+3. **Start the server:**
 
-6. Run the development server:
-\`\`\`bash
+```bash
 npm run dev
-\`\`\`
+```
 
-7. Open [http://localhost:3000](http://localhost:3000) in your browser
+**Test Users** (all passwords: `TestPass123!`):
+- `qa.lead@platypuslab.test` - QA Lead
+- `senior.qa@platypuslab.test` - Senior QA
+- `qa.engineer@platypuslab.test` - QA Engineer
+- `junior.qa@platypuslab.test` - Junior QA
+- `automation.qa@platypuslab.test` - Automation QA
 
-### Test Users
+</details>
 
-After running the database migrations, you'll have 5 test users available:
+## 🧪 Testing
 
-| Email | Password | Role |
-|-------|----------|------|
-| qa.lead@platypuslab.test | TestPass123! | QA Lead |
-| senior.qa@platypuslab.test | TestPass123! | Senior QA Engineer |
-| qa.engineer@platypuslab.test | TestPass123! | QA Engineer |
-| junior.qa@platypuslab.test | TestPass123! | Junior QA Engineer |
-| automation.qa@platypuslab.test | TestPass123! | QA Automation Engineer |
-
-**Spanish Guide**: See [docs/CONFIGURACION_ES.md](docs/CONFIGURACION_ES.md) for a complete guide in Spanish.
-
-## Running Tests
-
-### Unit & Integration Tests (Jest)
-\`\`\`bash
+```bash
+# Unit & Integration tests
 npm test
-\`\`\`
 
-### Watch Mode
-\`\`\`bash
+# Watch mode (for development)
 npm run test:watch
-\`\`\`
 
-### E2E Tests (Playwright)
-\`\`\`bash
+# E2E tests (Playwright)
 npm run test:ui
-\`\`\`
 
-### E2E with UI
-\`\`\`bash
+# E2E with browser UI
 npm run test:ui:headed
-\`\`\`
 
-### All Tests
-\`\`\`bash
+# Run everything
 npm test && npm run test:ui
-\`\`\`
+```
 
-## Project Structure
+## 🏗️ Tech Stack
 
-\`\`\`
-platypus-qa-lab/
-├── app/                    # Next.js app directory
-│   ├── api/               # API routes
-│   │   ├── analyze/       # AI analysis endpoint
-│   │   ├── mock/          # Mock API server
-│   │   └── cron/          # Scheduled test jobs
-│   ├── auth/              # Authentication pages
-│   │   ├── login/
-│   │   └── sign-up/
-│   ├── playground/        # API testing page
-│   ├── suites/            # Test suites management
-│   ├── mocks/             # Mock endpoint management
-│   ├── monitoring/        # Scheduled tests dashboard
-│   ├── bugs/              # Bug dashboard
-│   ├── team/              # Team collaboration
-│   ├── reports/           # Enhanced reporting
-│   ├── docs/              # API documentation generator
-│   ├── analytics/         # Analytics dashboard
-│   └── page.tsx           # Home page
-├── components/            # React components
-│   ├── ui/               # shadcn/ui components
-│   ├── navigation.tsx    # Main navigation
-│   ├── user-nav.tsx      # User menu
-│   ├── bug-report-dialog.tsx
-│   ├── create-suite-dialog.tsx
-│   ├── create-mock-dialog.tsx
-│   ├── assertion-builder.tsx
-│   └── bug-details-dialog.tsx
-├── lib/                   # Utilities
-│   ├── supabase/         # Supabase clients
-│   │   ├── client.ts
-│   │   └── server.ts
-│   ├── storage.ts        # LocalStorage wrapper
-│   ├── humor-engine.ts   # Comment generator
-│   ├── assertions.ts     # Assertion engine
-│   └── types.ts          # TypeScript types
-├── scripts/               # Database migrations
-│   └── 001_create_tables.sql
-├── docs/                  # QA Documentation
-│   ├── QA_PLAN.md
-│   ├── TEST_CASES.md
-│   ├── BUG_REPORTS.md
-│   ├── TEST_EXECUTION_REPORT.md
-│   ├── TEST_METRICS.md
-│   ├── SEVERITY_MATRIX.md
-│   ├── QA_CHECKLIST.md
-│   ├── TEST_STRATEGY.md
-│   ├── API_DOCUMENTATION.md
-│   ├── EMAIL_SETUP.md
-│   └── CONFIGURACION_ES.md
-├── __tests__/            # Jest tests
-├── e2e/                  # Playwright tests
-├── middleware.ts         # Auth middleware
-└── public/               # Static assets
-\`\`\`
+<div align="center">
 
-## QA Documentation
+| Category | Technologies |
+|----------|-------------|
+| **Frontend** | Next.js 16 · TypeScript · Tailwind CSS v4 |
+| **UI/UX** | shadcn/ui · Framer Motion · Recharts |
+| **Backend** | Next.js API Routes · Supabase |
+| **Database** | PostgreSQL (via Supabase) |
+| **AI** | **Grok AI** for response analysis |
+| **Email** | Resend |
+| **Testing** | Jest · Playwright · Supertest |
+| **CI/CD** | GitHub Actions |
 
-Comprehensive QA documentation is available in the `/docs` folder:
+</div>
 
-- **[QA Plan](docs/QA_PLAN.md)**: Complete testing strategy and approach
-- **[Test Cases](docs/TEST_CASES.md)**: 27+ detailed test cases covering all features
-- **[Bug Reports](docs/BUG_REPORTS.md)**: Sample bugs with humorous severity descriptions
-- **[Test Execution Report](docs/TEST_EXECUTION_REPORT.md)**: Results from testing cycles
-- **[Test Metrics](docs/TEST_METRICS.md)**: Quality metrics and KPIs
-- **[Severity Matrix](docs/SEVERITY_MATRIX.md)**: Bug severity definitions with platypus commentary
-- **[QA Checklist](docs/QA_CHECKLIST.md)**: Pre-release quality checklist
-- **[Test Strategy](docs/TEST_STRATEGY.md)**: Agile testing strategy and automation approach
-- **[API Documentation](docs/API_DOCUMENTATION.md)**: Complete API reference
-- **[Email Setup](docs/EMAIL_SETUP.md)**: Email notification configuration guide
-- **[Configuración en Español](docs/CONFIGURACION_ES.md)**: Guía completa en español
+## 🤖 AI-Powered Analysis
 
-## API Endpoints
+Every API response gets analyzed by **Grok AI**, which provides:
 
-### POST /api/analyze
+- 🎭 **Witty Commentary** - Context-aware humor about your API
+- 📊 **Technical Insights** - Performance metrics and status analysis
+- 🎯 **Smart Suggestions** - Tips for improving your APIs
+- 😄 **Personality Modes** - Optimistic, sarcastic, or technical tones
+- 🚨 **Issue Detection** - Spots problems before you do
 
-Analyzes API responses and returns humorous, context-aware commentary.
+Example response:
 
-**Request:**
-\`\`\`json
+```json
 {
-  "statusCode": 200,
-  "responseTime": 150,
-  "url": "https://api.github.com/users/octocat",
-  "method": "GET",
-  "responseBody": {}
-}
-\`\`\`
-
-**Response:**
-\`\`\`json
-{
-  "comment": "This API is having a great day. Lightning fast response!",
+  "comment": "This API is having a great day! Lightning fast response. 🚀",
   "emoji": "✨",
   "personality": "optimistic",
   "technicalNote": "Excellent response time under 200ms",
   "statusCode": 200,
-  "responseTime": 150,
-  "timestamp": 1706198400000
+  "responseTime": 150
 }
-\`\`\`
+```
 
-### GET/POST/PUT/DELETE /api/mock/[...path]
+## 🔄 CI/CD Pipeline
 
-Dynamic mock API server that serves custom responses based on configured mocks.
+This project includes a complete GitHub Actions workflow that runs automatically on every push:
 
-### POST /api/cron/run-scheduled-tests
+```mermaid
+graph LR
+    A[Push Code] --> B[Install Dependencies]
+    B --> C[Run Jest Tests]
+    C --> D[Run Playwright E2E]
+    D --> E[Generate Reports]
+    E --> F[Upload Artifacts]
+    F --> G[Deploy ✅]
+```
 
-Executes scheduled test suites (triggered by cron jobs or manually). Sends email notifications if tests fail and RESEND_API_KEY is configured.
+**What it does:**
+- ✅ Runs all unit and integration tests
+- ✅ Executes E2E tests with Playwright
+- ✅ Generates coverage reports
+- ✅ Uploads screenshots and videos on failure
+- ✅ Creates test result artifacts
+- ✅ Maintains code quality standards
 
-## Database Schema
+See [`.github/workflows/test.yml`](.github/workflows/test.yml) for the full configuration.
 
-The application uses Supabase with the following tables:
 
-- **profiles**: User profiles with roles (tester, lead_qa, admin)
-- **test_suites**: Test suite collections
-- **suite_requests**: Individual requests within suites
-- **suite_executions**: Test execution history
-- **execution_results**: Individual request results
-- **assertions**: Validation rules for requests
-- **mock_endpoints**: Mock API configurations
-- **scheduled_tests**: Cron-based test schedules
-- **bugs**: Bug reports with assignments
-- **bug_comments**: Comment threads on bugs
-- **bug_activities**: Activity log for bugs
-- **team_members**: Team membership and roles
+## 📖 Documentation
 
-All tables include Row Level Security (RLS) policies for data protection.
+Comprehensive guides in the `/docs` folder:
 
-## Preset APIs
+| Document | Description |
+|----------|-------------|
+| 📋 [QA Plan](docs/QA_PLAN.md) | Complete testing strategy |
+| ✅ [Test Cases](docs/TEST_CASES.md) | 27+ detailed test scenarios |
+| 🐛 [Bug Reports](docs/BUG_REPORTS.md) | Example bugs with humor |
+| 📊 [Test Metrics](docs/TEST_METRICS.md) | Quality KPIs and tracking |
+| 🎯 [Test Strategy](docs/TEST_STRATEGY.md) | Agile testing approach |
+| 📡 [API Docs](docs/API_DOCUMENTATION.md) | Complete API reference |
+| 📧 [Email Setup](docs/EMAIL_SETUP.md) | Notification configuration |
+| 🇪🇸 [Guía en Español](docs/CONFIGURACION_ES.md) | Spanish guide |
 
-The playground comes with these public APIs ready to test:
+## 🎯 Preset APIs
 
-- **GitHub User**: `https://api.github.com/users/octocat`
-- **Pokemon**: `https://pokeapi.co/api/v2/pokemon/pikachu`
-- **Random Dog**: `https://dog.ceo/api/breeds/image/random`
-- **NASA APOD**: `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`
-- **JSONPlaceholder**: `https://jsonplaceholder.typicode.com/posts/1`
+Test these APIs right out of the box:
 
-## User Roles & Permissions
+```javascript
+🐙 GitHub User API    → https://api.github.com/users/octocat
+⚡ Pokemon API        → https://pokeapi.co/api/v2/pokemon/pikachu
+🐕 Random Dog Images  → https://dog.ceo/api/breeds/image/random
+🌌 NASA Picture       → https://api.nasa.gov/planetary/apod
+📝 JSONPlaceholder    → https://jsonplaceholder.typicode.com/posts/1
+```
 
-### Tester
-- Test APIs and create test suites
-- Report and comment on bugs
-- View team activity
-- Export personal reports
+## 👥 User Roles
 
-### Lead QA
-- All Tester permissions
-- Assign bugs to team members
-- Create scheduled tests
-- Export team reports
-- Manage test suites
+<table>
+<tr>
+<td align="center" width="33%">
 
-### Admin
-- All Lead QA permissions
-- Manage team members
-- Configure mock endpoints
-- Access all analytics
-- System configuration
+### 🧪 Tester
+Test APIs<br>
+Create suites<br>
+Report bugs<br>
+View team activity
 
-## Contributing
+</td>
+<td align="center" width="33%">
 
-Contributions are welcome! Please follow these steps:
+### 👨‍💼 Lead QA
+All Tester features<br>
+Assign bugs<br>
+Schedule tests<br>
+Export team reports
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
+</td>
+<td align="center" width="33%">
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+### 👑 Admin
+All Lead features<br>
+Manage team<br>
+Configure mocks<br>
+Full system access
 
-## Testing Guidelines
+</td>
+</tr>
+</table>
 
-- Write tests for all new features
+## 🤝 Contributing
+
+This is a personal project, but contributions are welcome!
+
+1. 🍴 Fork the repo
+2. 🌿 Create a feature branch: `git checkout -b feature/amazing-feature`
+3. ✍️ Commit changes: `git commit -m 'Add amazing feature'`
+4. 📤 Push to branch: `git push origin feature/amazing-feature`
+5. 🎉 Open a Pull Request
+
+**Guidelines:**
+- Write tests for new features
 - Maintain 80%+ code coverage
-- Run all tests before submitting PR
-- Include both unit and E2E tests
-- Add humorous comments (the platypus insists)
-- Follow the QA documentation standards
+- Add humorous comments (platypus approved)
+- Follow existing code style
 
-## CI/CD Pipeline
+## 📝 License
 
-The project includes a GitHub Actions workflow that:
+MIT License - do whatever you want with it.
 
-1. Runs on every push and pull request
-2. Installs dependencies
-3. Runs Jest unit tests
-4. Runs Playwright E2E tests
-5. Generates test reports
-6. Uploads artifacts (screenshots, videos, reports)
-7. Deploys to Vercel on main branch
+## 🙏 Acknowledgments
 
-## Known Issues
+Built with amazing open source tools:
 
-See [BUG_REPORTS.md](docs/BUG_REPORTS.md) for current known issues.
+- [Next.js](https://nextjs.org/) - The React framework
+- [Supabase](https://supabase.com/) - Backend as a service
+- [shadcn/ui](https://ui.shadcn.com/) - Beautiful components
+- [Recharts](https://recharts.org/) - Data visualization
+- [Playwright](https://playwright.dev/) - E2E testing
+- [Jest](https://jestjs.io/) - Unit testing
+- [Grok AI](https://grok.x.ai/) - AI-powered analysis
+- [Resend](https://resend.com/) - Email notifications
 
-## Roadmap
-
-- [x] User authentication (Supabase)
-- [x] Supabase database integration
-- [x] Test suites and collections
-- [x] API mocking and stubbing
-- [x] Advanced assertions engine
-- [x] Scheduled tests and monitoring
-- [x] Email notifications (Resend)
-- [x] Team collaboration features
-- [x] Enhanced reporting system
-- [x] API documentation generator
-- [ ] Real-time notifications (WebSockets)
-- [ ] Slack/Discord integrations
-- [ ] Performance testing features
-- [ ] Load testing capabilities
-- [ ] More AI-powered insights
-- [ ] Mobile app (React Native)
-
-## License
-
-MIT License - See LICENSE file for details
-
-## Acknowledgments
-
-- Built with [Next.js](https://nextjs.org/)
-- Database and Auth by [Supabase](https://supabase.com/)
-- UI components from [shadcn/ui](https://ui.shadcn.com/)
-- Charts powered by [Recharts](https://recharts.org/)
-- Tested with [Playwright](https://playwright.dev/) and [Jest](https://jestjs.io/)
-- Humor provided by one very opinionated platypus
-
-## Support
-
-If you encounter issues:
-
-1. Check the [documentation](docs/)
-2. Search existing [issues](https://github.com/yourusername/platypus-qa-lab/issues)
-3. Create a new issue with details
-4. Ask the platypus (results may vary)
+And one very opinionated platypus 🦦 for quality assurance.
 
 ---
 
-**Made with love and sarcasm by QA engineers, for QA engineers**
+<div align="center">
 
-*"Testing serious, results hilarious. Because if the API fails, at least we laugh together."* - The Platypus
+**"Testing serious, results hilarious."**
+
+Made with ☕ and 🦦 by [@andresrodpaz](https://github.com/andresrodpaz)
+
+[⬆ Back to top](#-platypus-qa-lab)
+
+</div>
