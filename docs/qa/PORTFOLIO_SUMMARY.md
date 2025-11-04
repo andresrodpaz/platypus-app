@@ -344,16 +344,5 @@ e2e/
 
 ---
 
-## 📞 Contact & Portfolio
 
-**Project Repository**: [GitHub](https://github.com/your-username/platypus-qa)  
-**Live Application**: [Demo](https://platypus-qa-demo.vercel.app)  
-**CI/CD Pipeline**: [GitHub Actions](https://github.com/your-username/platypus-qa/actions)
-
----
-
-**Last Updated**: January 2025  
-**Status**: ✅ Production Ready - All Tests Passing
-
-*This portfolio demonstrates professional QA automation engineering skills suitable for enterprise-level quality assurance roles.*
 
