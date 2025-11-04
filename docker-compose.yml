@@ -1,0 +1,117 @@
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: platypus-qa-postgres
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+      - POSTGRES_DB=${POSTGRES_DB:-platypus_qa}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    networks:
+      - platypus-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # PostgREST - REST API for PostgreSQL (Supabase-compatible)
+  postgrest:
+    image: postgrest/postgrest:v12.0.2
+    container_name: platypus-qa-postgrest
+    ports:
+      - "3001:3000"
+    environment:
+      - PGRST_DB_URI=postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-platypus_qa}
+      - PGRST_DB_SCHEMA=public
+      - PGRST_DB_ANON_ROLE=postgres
+      - PGRST_JWT_SECRET=${SUPABASE_JWT_SECRET:-your-super-secret-jwt-token-with-at-least-32-characters-long}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - platypus-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget --quiet --tries=1 --spider http://localhost:3000/ || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # Next.js Application (Production)
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Build args for NEXT_PUBLIC_* variables (required at build time)
+        - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL:-http://localhost:3001}
+        - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY:-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0}
+        - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
+        - NEXT_PUBLIC_ENABLE_AI_HUMOR=${NEXT_PUBLIC_ENABLE_AI_HUMOR:-true}
+        - NEXT_PUBLIC_ENABLE_EMAIL_NOTIFICATIONS=${NEXT_PUBLIC_ENABLE_EMAIL_NOTIFICATIONS:-false}
+        - NEXT_PUBLIC_ENABLE_SCHEDULED_TESTS=${NEXT_PUBLIC_ENABLE_SCHEDULED_TESTS:-true}
+    container_name: platypus-qa-app
+    ports:
+      - "3000:3000"
+    environment:
+      # Database Configuration (Local PostgreSQL)
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-platypus_qa}
+      
+      # Supabase Configuration (Local PostgREST)
+      - SUPABASE_URL=${SUPABASE_URL:-http://postgrest:3000}
+      - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL:-http://localhost:3001}
+      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY:-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0}
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY:-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0}
+      - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY:-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU}
+      
+      # AI Configuration (Optional)
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - XAI_API_KEY=${XAI_API_KEY:-}
+      - GROK_XAI_API_KEY=${GROK_XAI_API_KEY:-}
+      
+      # Email Notifications (Optional)
+      - RESEND_API_KEY=${RESEND_API_KEY:-}
+      - NOTIFICATION_EMAIL_FROM=${NOTIFICATION_EMAIL_FROM:-}
+      
+      # Application Configuration
+      - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
+      
+      # Feature Flags
+      - NEXT_PUBLIC_ENABLE_AI_HUMOR=${NEXT_PUBLIC_ENABLE_AI_HUMOR:-true}
+      - NEXT_PUBLIC_ENABLE_EMAIL_NOTIFICATIONS=${NEXT_PUBLIC_ENABLE_EMAIL_NOTIFICATIONS:-false}
+      - NEXT_PUBLIC_ENABLE_SCHEDULED_TESTS=${NEXT_PUBLIC_ENABLE_SCHEDULED_TESTS:-true}
+      
+      # Node Environment
+      - NODE_ENV=production
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - platypus-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  postgres-data:
+    driver: local
+    name: platypus-qa-postgres-data
+
+networks:
+  platypus-network:
+    driver: bridge
+    name: platypus-qa-network
