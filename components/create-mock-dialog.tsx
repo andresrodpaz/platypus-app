@@ -120,7 +120,7 @@ export function CreateMockDialog({ open, onOpenChange, onSuccess, editingMock }:
       onOpenChange(false)
       onSuccess()
     } catch (error) {
-      console.error("[v0] Failed to save mock:", error)
+      console.error("[-] Failed to save mock:", error)
       toast({
         title: "Save failed",
         description: "The platypus couldn't save your mock",

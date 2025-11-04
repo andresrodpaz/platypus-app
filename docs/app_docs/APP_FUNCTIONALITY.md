@@ -628,7 +628,7 @@ bugs (1) ----< (N) bug_activities
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY`
-- All other Supabase vars (auto-provided by v0)
+- All other Supabase vars (auto-provided by -)
 
 ---
 

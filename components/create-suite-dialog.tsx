@@ -63,7 +63,7 @@ export function CreateSuiteDialog({ open, onOpenChange, onSuccess }: CreateSuite
       onOpenChange(false)
       onSuccess()
     } catch (error) {
-      console.error("[v0] Failed to create suite:", error)
+      console.error("[-] Failed to create suite:", error)
       toast({
         title: "Creation failed",
         description: "The platypus couldn't create your suite",

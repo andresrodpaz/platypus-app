@@ -122,3 +122,20 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Mobile menu button - visible on small screens */
+.mobile-menu-button,
+button.mobile-menu-button,
+[data-slot="button"].mobile-menu-button {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+@media (min-width: 1024px) {
+  .mobile-menu-button,
+  button.mobile-menu-button,
+  [data-slot="button"].mobile-menu-button {
+    display: none !important;
+  }
+}

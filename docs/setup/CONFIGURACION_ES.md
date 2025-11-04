@@ -6,7 +6,7 @@ Esta guía te explica cómo obtener todas las variables de entorno necesarias y 
 
 ### Variables de Supabase (Ya Configuradas ✅)
 
-**¡Buenas noticias!** Si estás trabajando en v0, todas estas variables ya están configuradas automáticamente:
+**¡Buenas noticias!** Si estás trabajando en -, todas estas variables ya están configuradas automáticamente:
 
 - `SUPABASE_URL` - URL de tu proyecto Supabase
 - `NEXT_PUBLIC_SUPABASE_URL` - URL pública para el cliente
@@ -16,7 +16,7 @@ Esta guía te explica cómo obtener todas las variables de entorno necesarias y 
 - `SUPABASE_JWT_SECRET` - Secreto JWT para autenticación
 - `NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL` - URL de redirección para desarrollo
 
-**No necesitas hacer nada con estas variables en v0.**
+**No necesitas hacer nada con estas variables en -.**
 
 ### Variable de Email (Necesitas Configurar) 📧
 
@@ -37,9 +37,9 @@ Para enviar notificaciones por email cuando los tests fallen, necesitas configur
 4. Dale un nombre (por ejemplo: "Platypus QA Lab")
 5. Copia la clave que empieza con `re_`
 
-#### Paso 3: Agregar la Variable en v0
+#### Paso 3: Agregar la Variable en -
 
-1. En v0, abre el menú lateral izquierdo
+1. En -, abre el menú lateral izquierdo
 2. Haz clic en **"Vars"** (Variables)
 3. Haz clic en **"Add Variable"**
 4. Nombre: `RESEND_API_KEY`
@@ -71,7 +71,7 @@ He creado 5 usuarios de prueba que puedes usar para probar la aplicación. Todos
 ### Cómo Usar los Usuarios de Prueba
 
 1. **Ejecutar el Script de Creación:**
-   - En v0, busca el archivo `scripts/seed-test-users.js`
+   - En -, busca el archivo `scripts/seed-test-users.js`
    - Haz clic en el botón de **ejecutar** (▶️) en la parte superior del archivo
    - El script creará automáticamente los 5 usuarios de prueba en Supabase
    - Verás mensajes de confirmación en la consola
@@ -98,16 +98,16 @@ He creado 5 usuarios de prueba que puedes usar para probar la aplicación. Todos
 
 ### Resumen de Pasos
 
-1. **Variables de Supabase:** ✅ Ya configuradas en v0
+1. **Variables de Supabase:** ✅ Ya configuradas en -
 2. **API Key de Resend:** 📧 Necesitas agregarla (ver arriba)
-3. **Usuarios de Prueba:** 👥 Ejecutar el script `scripts/seed-test-users.js` en v0
+3. **Usuarios de Prueba:** 👥 Ejecutar el script `scripts/seed-test-users.js` en -
 
 ### Verificar que Todo Funciona
 
 #### 1. Verificar Supabase
 \`\`\`bash
 # Las variables ya están configuradas, pero puedes verificar en:
-# v0 → Sidebar → Vars
+# - → Sidebar → Vars
 \`\`\`
 
 #### 2. Verificar Email
@@ -133,7 +133,7 @@ He creado 5 usuarios de prueba que puedes usar para probar la aplicación. Todos
 
 ### "No puedo iniciar sesión con los usuarios de prueba"
 
-**Solución:** Asegúrate de haber ejecutado el script `scripts/seed-test-users.js` haciendo clic en el botón de ejecutar (▶️) en v0.
+**Solución:** Asegúrate de haber ejecutado el script `scripts/seed-test-users.js` haciendo clic en el botón de ejecutar (▶️) en -.
 
 ### "Los emails no se envían"
 
@@ -143,13 +143,13 @@ He creado 5 usuarios de prueba que puedes usar para probar la aplicación. Todos
 3. Alcanzaste el límite diario (100 emails)
 
 **Solución:**
-- Verifica la variable en v0 → Vars
+- Verifica la variable en - → Vars
 - Revisa los logs en la consola del navegador
-- Busca mensajes que empiecen con `[v0]`
+- Busca mensajes que empiecen con `[-]`
 
 ### "Error al conectar con Supabase"
 
-**Solución:** Las variables de Supabase ya están configuradas en v0. Si ves este error:
+**Solución:** Las variables de Supabase ya están configuradas en -. Si ves este error:
 1. Verifica que estás en el proyecto correcto
 2. Revisa la sección "Connect" en el sidebar
 3. Asegúrate de que Supabase está conectado
@@ -165,7 +165,7 @@ He creado 5 usuarios de prueba que puedes usar para probar la aplicación. Todos
 1. **Usa el usuario QA Lead** para probar funciones de administración
 2. **Prueba con diferentes usuarios** para ver cómo se ve la colaboración
 3. **Configura emails** para recibir notificaciones reales de tests fallidos
-4. **Revisa los logs** con `console.log("[v0] ...")` para debugging
+4. **Revisa los logs** con `console.log("[-] ...")` para debugging
 
 ## 🦦 ¡Listo para Probar!
 

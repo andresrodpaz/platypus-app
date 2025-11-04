@@ -13,4 +13,4 @@ global.localStorage = localStorageMock
 // Mock fetch
 global.fetch = jest.fn()
 
-console.log("[v0] Jest setup complete - localStorage and fetch mocked")
+console.log("Jest setup complete - localStorage and fetch mocked")

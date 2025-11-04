@@ -37,8 +37,8 @@ Add the following environment variable to your project:
 RESEND_API_KEY=re_your_actual_api_key_here
 \`\`\`
 
-**In v0 (Recommended):**
-- Open the left sidebar in your v0 chat
+**In - (Recommended):**
+- Open the left sidebar in your - chat
 - Click on **Vars** (Variables section)
 - Click **Add Variable**
 - Name: `RESEND_API_KEY`
@@ -103,7 +103,7 @@ This is more than enough for most QA teams!
 ### Emails Not Sending
 
 1. **Check API Key**: Make sure `RESEND_API_KEY` is set correctly
-2. **Check Logs**: Look for `[v0]` logs in your console
+2. **Check Logs**: Look for `[-]` logs in your console
 3. **Verify Domain**: If using a custom domain, ensure DNS is configured
 4. **Check Spam**: Test emails might end up in spam folder
 

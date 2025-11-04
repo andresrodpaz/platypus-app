@@ -64,7 +64,7 @@ export default function AnalyticsPage() {
       setBugs(bugsData || [])
       generateHumorMessage(executionsData || [], bugsData || [])
     } catch (error) {
-      console.error("[v0] Failed to load analytics data:", error)
+      console.error("Failed to load analytics data:", error)
     } finally {
       setIsLoading(false)
     }

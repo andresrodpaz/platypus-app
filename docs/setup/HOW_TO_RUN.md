@@ -54,9 +54,9 @@ SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 
 The SQL script will create all necessary tables. You can run it in two ways:
 
-**Option A: Using v0 (Recommended)**
+**Option A: Using - (Recommended)**
 - The script is already in `scripts/001_create_tables.sql`
-- v0 can execute it directly for you
+- - can execute it directly for you
 
 **Option B: Supabase Dashboard**
 1. Go to your Supabase project

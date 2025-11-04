@@ -47,7 +47,7 @@ export function UserNav() {
 
   const handleSignOut = async () => {
     await supabase.auth.signOut()
-    console.log("[v0] The platypus waves goodbye. See you soon, QA warrior!")
+    console.log("[-] The platypus waves goodbye. See you soon, QA warrior!")
     router.push("/")
     router.refresh()
   }

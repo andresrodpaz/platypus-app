@@ -96,14 +96,14 @@ export async function sendTestFailureNotification({
     })
 
     if (error) {
-      console.error("[v0] Failed to send email:", error)
+      console.error("[-] Failed to send email:", error)
       return { success: false, error }
     }
 
-    console.log("[v0] Email sent successfully:", data)
+    console.log("[-] Email sent successfully:", data)
     return { success: true, data }
   } catch (error) {
-    console.error("[v0] Email service error:", error)
+    console.error("[-] Email service error:", error)
     return { success: false, error }
   }
 }

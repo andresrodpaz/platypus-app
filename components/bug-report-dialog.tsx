@@ -79,7 +79,7 @@ export function BugReportDialog({ open, onOpenChange, onBugCreated }: BugReportD
         resetForm()
       }, 2000)
     } catch (error) {
-      console.error("[v0] Failed to save bug:", error)
+      console.error("[-] Failed to save bug:", error)
       toast({
         title: "Save failed",
         description: "The platypus couldn't save the bug report",

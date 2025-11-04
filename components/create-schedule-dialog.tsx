@@ -45,7 +45,7 @@ export function CreateScheduleDialog({ open, onOpenChange, onSuccess }: CreateSc
       if (error) throw error
       setSuites(data || [])
     } catch (error) {
-      console.error("[v0] Failed to load suites:", error)
+      console.error("[-] Failed to load suites:", error)
     }
   }
 

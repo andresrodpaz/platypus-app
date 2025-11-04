@@ -91,12 +91,4 @@
 **Medium**: Feature partially broken, workaround exists
 **Low**: Minor issue, cosmetic problem
 
-## Sign-Off
 
-**QA Lead**: _________________ Date: _______
-**Developer**: _________________ Date: _______
-**Product Owner**: _________________ Date: _______
-
----
-
-*The platypus has reviewed this checklist and approves. Ship it with confidence!*

@@ -89,11 +89,4 @@ This document outlines the comprehensive testing strategy for Platypus QA Lab, a
 | Automation Engineer | Automated test development |
 | Developer | Bug fixes and code reviews |
 
-## 8. Approval
 
-This test plan requires approval from:
-- Project Manager
-- Development Lead
-- QA Lead
-
-**Note**: The platypus reserves the right to judge all testing decisions with maximum sarcasm.

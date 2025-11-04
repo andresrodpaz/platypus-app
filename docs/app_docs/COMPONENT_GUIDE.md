@@ -389,7 +389,7 @@ Server-side Supabase client for API routes and server components.
    - Execute `MASTER_SETUP.sql` in Supabase SQL Editor
 
 2. **Configure environment variables:**
-   - Add `OPENAI_API_KEY` for AI analysis (optional)
+   - Add `GROK_XAI_API_KEY` for AI analysis (optional)
    - Supabase variables are auto-configured
 
 3. **Start testing:**
@@ -411,7 +411,7 @@ Server-side Supabase client for API routes and server components.
 1. **API Testing:**
    - Start with preset APIs to learn the interface
    - Use the request history to revisit previous tests
-   - Check AI analysis for insights (add OPENAI_API_KEY)
+   - Check AI analysis for insights
 
 2. **Test Suites:**
    - Group related API tests together
@@ -433,30 +433,6 @@ Server-side Supabase client for API routes and server components.
    - Schedule critical tests to run regularly
    - Set up email notifications for failures
    - Review execution history in Reports
-
----
-
-## 🔧 Configuration
-
-### OpenAI API Key (Optional)
-Add to environment variables for AI-powered analysis:
-\`\`\`
-OPENAI_API_KEY=sk-...
-\`\`\`
-
-Without this key, the app uses fallback humorous responses.
-
-### Supabase
-All Supabase environment variables are auto-configured in v0.
-
----
-
-## 📞 Support
-
-For issues or questions:
-- Check the documentation in `/docs`
-- Review test cases in `__tests__/`
-- Open a support ticket at vercel.com/help
 
 ---
 

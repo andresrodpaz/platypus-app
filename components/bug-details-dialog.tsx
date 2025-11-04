@@ -57,7 +57,7 @@ export function BugDetailsDialog({ bug, open, onOpenChange, onUpdate }: BugDetai
       if (error) throw error
       setComments(data || [])
     } catch (error) {
-      console.error("[v0] Failed to load comments:", error)
+      console.error("[-] Failed to load comments:", error)
     }
   }
 
@@ -68,7 +68,7 @@ export function BugDetailsDialog({ bug, open, onOpenChange, onUpdate }: BugDetai
       if (error) throw error
       setTeamMembers(data || [])
     } catch (error) {
-      console.error("Failed to load team members:", error)
+      console.error("[-] Failed to load team members:", error)
     }
   }
 
@@ -106,7 +106,7 @@ export function BugDetailsDialog({ bug, open, onOpenChange, onUpdate }: BugDetai
         description: "The platypus recorded your comment",
       })
     } catch (error) {
-      console.error("Failed to add comment:", error)
+      console.error("[-] Failed to add comment:", error)
       toast({
         title: "Comment failed",
         description: "The platypus couldn't save your comment",
@@ -133,7 +133,7 @@ export function BugDetailsDialog({ bug, open, onOpenChange, onUpdate }: BugDetai
         description: "The platypus assigned the bug",
       })
     } catch (error) {
-      console.error("Failed to update assignment:", error)
+      console.error("[-] Failed to update assignment:", error)
       toast({
         title: "Assignment failed",
         description: "The platypus couldn't assign the bug",
