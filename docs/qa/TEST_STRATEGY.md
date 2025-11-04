@@ -324,8 +324,3 @@ Testing covers all functional, non-functional, and user experience aspects of th
 
 ---
 
-**Document Version**: 1.0  
-**Last Updated**: 2025-01-25  
-**Owner**: QA Team  
-
-*The platypus approves this strategy. Let's test with style and substance!*
