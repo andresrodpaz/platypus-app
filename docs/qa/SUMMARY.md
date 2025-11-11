@@ -2,7 +2,7 @@
 
 ## 📋 Executive Summary
 
-This portfolio showcases comprehensive QA automation engineering work on **Platypus QA Lab**, a modern Next.js web application for API testing and quality assurance. The project demonstrates professional-grade testing practices, automation frameworks, and quality metrics suitable for enterprise-level applications.
+This project showcases comprehensive QA automation engineering work on **Platypus QA Lab**, a modern Next.js web application for API testing and quality assurance. The project demonstrates professional-grade testing practices, automation frameworks, and quality metrics suitable for enterprise-level applications.
 
 **Project Duration**: 3 months  
 **Role**: QA Automation Engineer  
