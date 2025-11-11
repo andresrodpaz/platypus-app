@@ -214,12 +214,12 @@ Comprehensive guides in the `/docs` folder:
 
 | Document | Description |
 |----------|-------------|
-| 📋 [QA Plan](docs/QA_PLAN.md) | Complete testing strategy |
-| ✅ [Test Cases](docs/TEST_CASES.md) | 27+ detailed test scenarios |
-| 🐛 [Bug Reports](docs/BUG_REPORTS.md) | Example bugs with humor |
-| 📊 [Test Metrics](docs/TEST_METRICS.md) | Quality KPIs and tracking |
-| 🎯 [Test Strategy](docs/TEST_STRATEGY.md) | Agile testing approach |
-| 📡 [API Docs](docs/API_DOCUMENTATION.md) | Complete API reference |
+| 📋 [QA Plan](docs/qa/QA_PLAN.md) | Complete testing strategy |
+| ✅ [Test Cases](docs/qa/TEST_CASES.md) | 27+ detailed test scenarios |
+| 🐛 [Bug Reports](docs/qa/BUG_REPORTS.md) | Example bugs with humor |
+| 📊 [Test Metrics](docs/qa/TEST_METRICS.md) | Quality KPIs and tracking |
+| 🎯 [Test Strategy](docs/qa/TEST_STRATEGY.md) | Agile testing approach |
+| 📡 [API Docs](docs/qa/API_DOCUMENTATION.md) | Complete API reference |
 
 
 ## 🎯 Preset APIs
@@ -234,40 +234,6 @@ Test these APIs right out of the box:
 📝 JSONPlaceholder    → https://jsonplaceholder.typicode.com/posts/1
 ```
 
-## 👥 User Roles
-
-<table>
-<tr>
-<td align="center" width="33%">
-
-### 🧪 Tester
-Test APIs<br>
-Create suites<br>
-Report bugs<br>
-View team activity
-
-</td>
-<td align="center" width="33%">
-
-### 👨‍💼 Lead QA
-All Tester features<br>
-Assign bugs<br>
-Schedule tests<br>
-Export team reports
-
-</td>
-<td align="center" width="33%">
-
-### 👑 Admin
-All Lead features<br>
-Manage team<br>
-Configure mocks<br>
-Full system access
-
-</td>
-</tr>
-</table>
-
 ## 🤝 Contributing
 
 This is a personal project, but contributions are welcome!
@@ -278,15 +244,7 @@ This is a personal project, but contributions are welcome!
 4. 📤 Push to branch: `git push origin feature/amazing-feature`
 5. 🎉 Open a Pull Request
 
-**Guidelines:**
-- Write tests for new features
-- Maintain 80%+ code coverage
-- Add humorous comments (platypus approved)
-- Follow existing code style
 
-## 📝 License
-
-MIT License - do whatever you want with it.
 
 ## 🙏 Acknowledgments
 
@@ -306,8 +264,6 @@ And one very opinionated platypus 🦦 for quality assurance.
 ---
 
 <div align="center">
-
-**"Testing serious, results hilarious."**
 
 Made with ☕ and 🦦 by [@andresrodpaz](https://github.com/andresrodpaz)
 
