@@ -220,8 +220,7 @@ Comprehensive guides in the `/docs` folder:
 | 📊 [Test Metrics](docs/TEST_METRICS.md) | Quality KPIs and tracking |
 | 🎯 [Test Strategy](docs/TEST_STRATEGY.md) | Agile testing approach |
 | 📡 [API Docs](docs/API_DOCUMENTATION.md) | Complete API reference |
-| 📧 [Email Setup](docs/EMAIL_SETUP.md) | Notification configuration |
-| 🇪🇸 [Guía en Español](docs/CONFIGURACION_ES.md) | Spanish guide |
+
 
 ## 🎯 Preset APIs
 
