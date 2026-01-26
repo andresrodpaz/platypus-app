@@ -41,7 +41,7 @@
     "date-fns": "^4.1.0",
     "jspdf": "^2.5.2",
     "lucide-react": "^0.454.0",
-    "next": "^16.0.0",
+    "next": "16.0.10",
     "next-themes": "latest",
     "node-notifier": "latest",
     "openai": "6.7.0",
