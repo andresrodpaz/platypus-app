@@ -118,7 +118,7 @@ it("should handle complete analysis workflow", async () => {
 Playwright's auto-waiting is one of its most powerful features. Always prefer smart waiting over hard-coded timeouts.
 
 **Real Example from the Project**:
-\`\`\`typescript
+```typescript
 // From e2e/playground.spec.ts
 test("should send API request", async ({ page }) => {
   // Navigate with network idle wait
@@ -135,10 +135,10 @@ test("should send API request", async ({ page }) => {
   // Auto-waiting with expect - no manual waits needed!
   await expect(page.locator('text=Response').first()).toBeVisible({ timeout: 30000 })
 })
-\`\`\`
+```
 
 **Best Practices**:
-\`\`\`typescript
+```typescript
 // ✅ Good: Auto-waiting with assertions
 await expect(page.locator('.result')).toBeVisible()
 await expect(page.locator('.result')).toContainText('Expected text')
@@ -156,7 +156,7 @@ await page.waitForTimeout(3000) // Unreliable and slow
 // ✅ Good: Wait for element state
 await page.locator('.loading').waitFor({ state: 'hidden' })
 await page.locator('.content').waitFor({ state: 'visible' })
-\`\`\`
+```
 
 **Why This Matters**:
 - **Reliability**: Auto-waiting adapts to actual conditions
@@ -168,7 +168,7 @@ await page.locator('.content').waitFor({ state: 'visible' })
 Each test must be independent and runnable in any order. Proper isolation prevents test pollution and flaky results.
 
 **Real Example from the Project**:
-\`\`\`typescript
+```typescript
 // From e2e/bugs.spec.ts
 test.describe("Bug Dashboard", () => {
   test.beforeEach(async ({ page }) => {
@@ -186,10 +186,10 @@ test.describe("Bug Dashboard", () => {
     // ... rest of test
   })
 })
-\`\`\`
+```
 
 **Isolation Strategies**:
-\`\`\`typescript
+```typescript
 // ✅ Good: Clear state before each test
 test.beforeEach(async ({ page }) => {
   await page.goto('/')
@@ -216,7 +216,7 @@ test.beforeEach(async () => {
 
 // ❌ Bad: Tests depend on execution order
 let sharedBugId // Don't share state between tests!
-\`\`\`
+```
 
 **Benefits**:
 - **Parallel execution**: Tests can run in any order
@@ -225,7 +225,7 @@ let sharedBugId // Don't share state between tests!
 - **CI/CD**: More predictable test results
 
 ### 2.4 Debugging Techniques
-\`\`\`typescript
+```typescript
 // Use headed mode for visual debugging
 // npm run test:ui:headed
 
@@ -237,12 +237,12 @@ console.log('[-] Current URL:', await page.url())
 
 // Take screenshots on failure
 await page.screenshot({ path: 'failure.png', fullPage: true })
-\`\`\`
+```
 
 ## 3. Jest Best Practices
 
 ### 3.1 Test Organization
-\`\`\`typescript
+```typescript
 describe('Feature: Bug Reporting', () => {
   describe('When user submits valid bug', () => {
     it('should create bug with correct data', () => {
@@ -260,13 +260,13 @@ describe('Feature: Bug Reporting', () => {
     })
   })
 })
-\`\`\`
+```
 
 ### 3.2 Mocking Best Practices
 Effective mocking isolates units under test and makes tests fast and reliable. Use mocks for external dependencies, API calls, and complex operations.
 
 **Real Example from the Project**:
-\`\`\`typescript
+```typescript
 // From __tests__/lib/email.test.ts
 import { sendTestFailureNotification } from "@/lib/email"
 
@@ -314,10 +314,10 @@ describe("Email Service", () => {
     )
   })
 })
-\`\`\`
+```
 
 **Mocking Patterns**:
-\`\`\`typescript
+```typescript
 // ✅ Good: Mock external dependencies
 jest.mock('@/lib/api-client')
 
@@ -345,7 +345,7 @@ jest.spyOn(storage, 'getItem').mockReturnValue('test-value')
 
 // ❌ Bad: Mock everything (loses test value)
 jest.mock('@/lib/storage') // Too broad if only testing one function
-\`\`\`
+```
 
 **When to Mock**:
 - ✅ External API calls
@@ -357,7 +357,7 @@ jest.mock('@/lib/storage') // Too broad if only testing one function
 - ❌ Business logic (test the real implementation)
 
 ### 3.3 Async Testing
-\`\`\`typescript
+```typescript
 // ✅ Good: Use async/await
 test('should fetch data', async () => {
   const data = await fetchData()
@@ -375,7 +375,7 @@ test('should fetch data', () => {
     expect(data).toBeDefined() // This might not run!
   })
 })
-\`\`\`
+```
 
 ## 4. API Testing Best Practices
 
@@ -390,7 +390,7 @@ test('should fetch data', () => {
 Comprehensive API testing covers happy paths, error scenarios, edge cases, and validation.
 
 **Real Example from the Project**:
-\`\`\`typescript
+```typescript
 // From __tests__/api/analyze.test.ts
 describe("API: /api/analyze", () => {
   it("should analyze 200 status code", async () => {
@@ -450,10 +450,10 @@ describe("API: /api/analyze", () => {
     expect(response.status).toBe(400)
   })
 })
-\`\`\`
+```
 
 **API Testing Checklist**:
-\`\`\`typescript
+```typescript
 describe('POST /api/endpoint', () => {
   // ✅ Happy path
   it('should handle valid request', async () => {
@@ -487,7 +487,7 @@ describe('POST /api/endpoint', () => {
     expect(Date.now() - start).toBeLessThan(500)
   })
 })
-\`\`\`
+```
 
 ## 5. CI/CD Integration
 
@@ -506,7 +506,7 @@ describe('POST /api/endpoint', () => {
 - **Pre-release**: Manual exploratory testing
 
 ### 5.3 Failure Handling
-\`\`\`yaml
+```yaml
 # Retry flaky tests
 retries: process.env.CI ? 2 : 0
 
@@ -516,7 +516,7 @@ continueOnError: true
 # Upload artifacts on failure
 - task: PublishBuildArtifacts@1
   condition: failed()
-\`\`\`
+```
 
 ## 6. Test Data Management
 
@@ -530,7 +530,7 @@ continueOnError: true
 Use factory functions and builders to create test data consistently and maintainably.
 
 **Real Example from the Project**:
-\`\`\`typescript
+```typescript
 // Factory function pattern
 function createTestBug(overrides = {}) {
   return {
@@ -561,10 +561,10 @@ describe('Bug Storage', () => {
     expect(critical).toHaveLength(1)
   })
 })
-\`\`\`
+```
 
 **Advanced Test Data Patterns**:
-\`\`\`typescript
+```typescript
 // ✅ Good: Factory with defaults
 function createTestRequest(overrides = {}) {
   return {
@@ -609,7 +609,7 @@ export const TEST_FIXTURES = {
 
 // ❌ Bad: Hard-coded test data
 const bug = { id: 'bug-1', title: 'Bug' } // Not reusable
-\`\`\`
+```
 
 **Benefits**:
 - **Consistency**: Same data structure across tests
@@ -626,13 +626,13 @@ const bug = { id: 'bug-1', title: 'Bug' } // Not reusable
 - **Lines**: 80%+
 
 ### 7.2 Coverage Analysis
-\`\`\`bash
+```bash
 # Generate coverage report
 npm run test:unit -- --coverage
 
 # View HTML report
 open coverage/lcov-report/index.html
-\`\`\`
+```
 
 ### 7.3 Coverage Best Practices
 - Focus on critical business logic
@@ -649,7 +649,7 @@ open coverage/lcov-report/index.html
 - **First Contentful Paint**: < 1.5 seconds
 
 ### 8.2 Performance Testing Tools
-\`\`\`typescript
+```typescript
 // Measure API response time
 const start = performance.now()
 await fetch('/api/bugs')
@@ -660,7 +660,7 @@ expect(duration).toBeLessThan(500)
 const metrics = await page.evaluate(() => 
   JSON.stringify(window.performance.timing)
 )
-\`\`\`
+```
 
 ## 9. Accessibility Testing
 
@@ -671,7 +671,7 @@ const metrics = await page.evaluate(() =>
 - Color contrast requirements
 
 ### 9.2 Accessibility Testing Approach
-\`\`\`typescript
+```typescript
 // Check for ARIA labels
 await expect(page.locator('button')).toHaveAttribute('aria-label')
 
@@ -681,7 +681,7 @@ await expect(page.locator('button:focus')).toBeVisible()
 
 // Test with screen reader
 // Manual testing with NVDA/JAWS/VoiceOver
-\`\`\`
+```
 
 ## 10. Continuous Improvement
 
@@ -711,7 +711,7 @@ await expect(page.locator('button:focus')).toBeVisible()
 Test names should clearly describe what is being tested and the expected outcome.
 
 **Best Practices**:
-\`\`\`typescript
+```typescript
 // ✅ Good: Descriptive and specific
 it('should return 400 when email is missing', () => {})
 it('should create bug with all required fields', () => {})
@@ -725,10 +725,10 @@ it('should validate request payload structure', () => {})
 it('test bug creation', () => {})
 it('works', () => {})
 it('bug test', () => {})
-\`\`\`
+```
 
 ### 12.2 Test Organization
-\`\`\`typescript
+```typescript
 // ✅ Good: Group related tests
 describe('Bug Storage', () => {
   describe('when saving a bug', () => {
@@ -748,7 +748,7 @@ describe('Bug Storage', () => {
 describe('API: /api/analyze', () => {})
 describe('API: /api/health', () => {})
 describe('Storage Utilities', () => {})
-\`\`\`
+```
 
 ## 13. Error Handling in Tests
 
@@ -756,7 +756,7 @@ describe('Storage Utilities', () => {})
 Make test failures easy to diagnose with clear error messages.
 
 **Real Example**:
-\`\`\`typescript
+```typescript
 // ✅ Good: Clear error messages
 expect(response.status).toBe(200)
 expect(data).toHaveProperty('comment', 'Response should include comment')
@@ -770,10 +770,10 @@ expect(data).toMatchObject({
 
 // ❌ Bad: Vague assertions
 expect(result).toBeTruthy() // What should be truthy?
-\`\`\`
+```
 
 ### 13.2 Testing Error Scenarios
-\`\`\`typescript
+```typescript
 // ✅ Good: Test error handling explicitly
 it('should handle network errors gracefully', async () => {
   // Mock network failure
@@ -795,12 +795,12 @@ it('should return 400 for invalid request', async () => {
   expect(response.body).toHaveProperty('error')
   expect(response.body.error).toContain('title')
 })
-\`\`\`
+```
 
 ## 14. Performance Testing Best Practices
 
 ### 14.1 Test Execution Performance
-\`\`\`typescript
+```typescript
 // ✅ Good: Measure actual performance
 it('should respond within 500ms', async () => {
   const start = performance.now()
@@ -822,10 +822,10 @@ describe('Performance Benchmarks', () => {
     expect(duration).toBeLessThan(5000)
   })
 })
-\`\`\`
+```
 
 ### 14.2 Load Testing
-\`\`\`typescript
+```typescript
 // ✅ Good: Concurrent request testing
 it('should handle concurrent requests', async () => {
   const requests = Array(10).fill(null).map(() => 
@@ -836,7 +836,7 @@ it('should handle concurrent requests', async () => {
   
   expect(responses.every(r => r.status === 200)).toBe(true)
 })
-\`\`\`
+```
 
 ## 15. Test Maintenance Best Practices
 
@@ -847,7 +847,7 @@ it('should handle concurrent requests', async () => {
 - **Refactor tests** when patterns emerge
 
 ### 15.2 Test Refactoring
-\`\`\`typescript
+```typescript
 // ✅ Good: Extract common patterns
 const createTestUser = () => ({
   id: generateId(),
@@ -867,12 +867,12 @@ export const testUtils = {
   clearStorage: () => localStorage.clear(),
   waitForApi: (url: string) => page.waitForResponse(url)
 }
-\`\`\`
+```
 
 ## 16. Accessibility Testing Best Practices
 
 ### 16.1 Automated Accessibility Testing
-\`\`\`typescript
+```typescript
 // ✅ Good: Test ARIA attributes
 it('should have proper ARIA labels', async ({ page }) => {
   const button = page.locator('button[type="submit"]')
@@ -891,7 +891,7 @@ it('should be navigable with keyboard', async ({ page }) => {
 it('should meet WCAG AA contrast requirements', async () => {
   // Use tools like axe-core or manual testing
 })
-\`\`\`
+```
 
 ### 16.2 Screen Reader Testing
 - Test with actual screen readers (NVDA, JAWS, VoiceOver)
@@ -910,7 +910,7 @@ it('should meet WCAG AA contrast requirements', async () => {
 - **Production**: Optimized multi-stage builds
 
 #### Container Test Execution
-\`\`\`bash
+```bash
 # Run tests in Docker container
 docker-compose run --rm app npm run test
 
@@ -922,12 +922,12 @@ docker-compose down
 # Test with production build
 docker build -t platypus-qa-lab:test .
 docker run --rm platypus-qa-lab:test npm run test
-\`\`\`
+```
 
 ### 11.2 Docker Image Testing
 
 #### Image Validation
-\`\`\`bash
+```bash
 # Check image size (should be < 200MB)
 docker images platypus-qa-lab
 
@@ -939,10 +939,10 @@ time docker run --rm platypus-qa-lab echo "ready"
 
 # Verify environment variables
 docker run --rm platypus-qa-lab env | grep SUPABASE
-\`\`\`
+```
 
 #### Health Check Testing
-\`\`\`yaml
+```yaml
 # Add health check to docker-compose.yml
 healthcheck:
   test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
@@ -950,19 +950,19 @@ healthcheck:
   timeout: 10s
   retries: 3
   start_period: 40s
-\`\`\`
+```
 
 ### 11.3 CI/CD Docker Integration
 
 #### GitHub Actions Docker Workflow
-\`\`\`yaml
+```yaml
 # .github/workflows/docker.yml
 - Build multi-platform images (amd64, arm64)
 - Run tests in container
 - Push to GitHub Container Registry
 - Tag with version, branch, and SHA
 - Generate build attestation
-\`\`\`
+```
 
 #### Pipeline Best Practices
 - **Build once, deploy many**: Use same image across environments
@@ -981,7 +981,7 @@ healthcheck:
 - ✅ Security options enabled
 
 #### Security Testing Commands
-\`\`\`bash
+```bash
 # Check for secrets in image
 docker history platypus-qa-lab --no-trunc | grep -i "secret\|password\|key"
 
@@ -995,12 +995,12 @@ docker run --rm \
   --read-only \
   --tmpfs /tmp \
   platypus-qa-lab
-\`\`\`
+```
 
 ### 11.5 Performance Testing in Containers
 
 #### Container Performance Metrics
-\`\`\`bash
+```bash
 # Monitor resource usage
 docker stats platypus-qa-lab
 
@@ -1012,7 +1012,7 @@ docker run --rm \
   -e SUPABASE_URL=$SUPABASE_URL \
   platypus-qa-lab \
   node -e "console.time('startup'); require('./server.js'); console.timeEnd('startup')"
-\`\`\`
+```
 
 #### Performance Optimization
 - Multi-stage builds reduce image size by 80%
@@ -1023,7 +1023,7 @@ docker run --rm \
 ### 11.6 Integration Testing with Docker Compose
 
 #### Test Database Integration
-\`\`\`bash
+```bash
 # Start services
 docker-compose up -d
 
@@ -1038,10 +1038,10 @@ docker-compose exec app npm run test:integration
 
 # Clean up
 docker-compose down -v
-\`\`\`
+```
 
 #### Multi-Service Testing
-\`\`\`yaml
+```yaml
 # docker-compose.test.yml
 services:
   app:
@@ -1054,12 +1054,12 @@ services:
     image: postgres:16-alpine
     healthcheck:
       test: ["CMD-SHELL", "pg_isready"]
-\`\`\`
+```
 
 ### 11.7 Deployment Testing
 
 #### Pre-Deployment Validation
-\`\`\`bash
+```bash
 # 1. Build production image
 docker build -t platypus-qa-lab:release .
 
@@ -1081,7 +1081,7 @@ STAGING_URL=http://localhost:3000 npm run test:e2e
 
 # 5. Clean up
 docker stop platypus-staging && docker rm platypus-staging
-\`\`\`
+```
 
 #### Deployment Verification
 - Container starts successfully
