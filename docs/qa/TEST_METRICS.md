@@ -52,12 +52,12 @@ This document tracks key quality metrics for Platypus QA Lab to measure testing 
 | Low | 4 | 40% |
 
 **Chart**: 
-\`\`\`
+```
 Critical: ░░░░░░░░░░ 0%
 High:     ██░░░░░░░░ 20%
 Medium:   ████░░░░░░ 40%
 Low:      ████░░░░░░ 40%
-\`\`\`
+```
 
 ### Defects by Status
 | Status | Count | Percentage |
@@ -240,21 +240,19 @@ Low:      ████░░░░░░ 40%
 ## Trend Analysis
 
 ### Defect Discovery Rate
-\`\`\`
+```
 Week 1: ████████░░ 8 bugs
 Week 2: ██░░░░░░░░ 2 bugs
 Week 3: ░░░░░░░░░░ 0 bugs
-\`\`\`
-
+```
 **Trend**: Defect discovery rate decreasing, indicating stabilization.
 
 ### Test Pass Rate Trend
-\`\`\`
+```
 Week 1: ████████░░ 80%
 Week 2: █████████░ 88%
 Week 3: █████████░ 85%
-\`\`\`
-
+```
 **Trend**: Pass rate stable around 85%, acceptable for release.
 
 ---
