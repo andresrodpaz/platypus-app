@@ -80,13 +80,6 @@ This document outlines the comprehensive testing strategy for Platypus QA Lab, a
 | Defect Reporting | Ongoing | Log and track bugs |
 | Test Closure | 1 day | Generate reports and metrics |
 
-## 7. Roles and Responsibilities
 
-| Role | Responsibilities |
-|------|------------------|
-| QA Lead | Test strategy, planning, and reporting |
-| QA Engineer | Test case creation and execution |
-| Automation Engineer | Automated test development |
-| Developer | Bug fixes and code reviews |
 
 
