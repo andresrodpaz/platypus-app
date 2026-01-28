@@ -69,7 +69,7 @@ We follow the test pyramid approach to ensure efficient and maintainable test co
 All tests follow the AAA structure for clarity and maintainability. This pattern ensures tests are easy to read and understand.
 
 **Real Example from the Project**:
-\`\`\`typescript
+```typescript
 // From __tests__/integration/api-integration.test.ts
 it("should handle complete analysis workflow", async () => {
   // Arrange: Create a realistic API test scenario
@@ -80,16 +80,13 @@ it("should handle complete analysis workflow", async () => {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   }
-
   const request = new NextRequest("http://localhost:3000/api/analyze", {
     method: "POST",
     body: JSON.stringify(testRequest),
   })
-
   // Act: Execute the API call
   const response = await analyzePost(request)
   const data = await response.json()
-
   // Assert: Verify complete response structure
   expect(response.status).toBe(200)
   expect(data).toHaveProperty("comment")
@@ -101,7 +98,7 @@ it("should handle complete analysis workflow", async () => {
   expect(typeof data.comment).toBe("string")
   expect(data.comment.length).toBeGreaterThan(10)
 })
-\`\`\`
+```
 
 **Benefits**:
 - **Clear separation** of concerns (setup, execution, verification)
@@ -1165,6 +1162,6 @@ docker stop platypus-staging && docker rm platypus-staging
 
 ---
 
-**Last Updated**: January 2025  
+**Last Updated**: December 2025  
 **Document Version**: 2.0  
 **Status**: ✅ Production Ready - Best Practices Validated
