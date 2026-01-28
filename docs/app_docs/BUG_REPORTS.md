@@ -139,15 +139,15 @@ The bug lifecycle in Platypus QA Lab follows this flow:
 
 ---
 
-## Sample Bug Reports
+## Bug Reports
 
 ### BUG-001: API Request Fails with Empty URL
 
 **Severity**: High  
 **Priority**: P1  
 **Status**: Fixed  
-**Reported By**: QA Team  
-**Reported Date**: 2025-01-15  
+**Reported By**: Andres Rodriguez Paz 
+**Reported Date**: 2025-11-15  
 **Environment**: Chrome 120, macOS 14
 
 **Steps to Reproduce**:
@@ -165,7 +165,6 @@ The bug lifecycle in Platypus QA Lab follows this flow:
 - Unhandled error thrown
 - Error shown in console but not to user
 
-**Screenshots**: [Error console screenshot]
 
 **Workaround**: Always enter a URL before clicking send
 
@@ -181,8 +180,8 @@ The bug lifecycle in Platypus QA Lab follows this flow:
 **Severity**: Low  
 **Priority**: P3  
 **Status**: Open  
-**Reported By**: UX Team  
-**Reported Date**: 2025-01-16  
+**Reported By**: Andres Rodriguez Paz 
+**Reported Date**: 2025-11-16  
 **Environment**: Firefox 121, Windows 11
 
 **Steps to Reproduce**:
@@ -198,7 +197,6 @@ The bug lifecycle in Platypus QA Lab follows this flow:
 - Yellow "Medium" badge text hard to read
 - Low contrast ratio (2.3:1, needs 4.5:1)
 
-**Screenshots**: [Badge contrast screenshot]
 
 **Workaround**: Use light mode
 
@@ -215,7 +213,7 @@ The bug lifecycle in Platypus QA Lab follows this flow:
 **Priority**: P2  
 **Status**: In Progress  
 **Reported By**: QA Team  
-**Reported Date**: 2025-01-17  
+**Reported Date**: 2025-11-16  
 **Environment**: Safari 17, macOS 14
 
 **Steps to Reproduce**:
@@ -230,8 +228,6 @@ The bug lifecycle in Platypus QA Lab follows this flow:
 **Actual Behavior**: 
 - Rarely shows negative values like "-5ms"
 - Occurs approximately 1 in 100 requests
-
-**Screenshots**: [Negative time screenshot]
 
 **Workaround**: Refresh and try again
 
@@ -252,8 +248,8 @@ The bug lifecycle in Platypus QA Lab follows this flow:
 **Severity**: Medium  
 **Priority**: P2  
 **Status**: Open  
-**Reported By**: QA Team  
-**Reported Date**: 2025-01-18  
+**Reported By**: Andres Rodriguez Paz
+**Reported Date**: 2025-11-17 
 **Environment**: Chrome 120, Windows 11
 
 **Steps to Reproduce**:
@@ -271,7 +267,6 @@ The bug lifecycle in Platypus QA Lab follows this flow:
 - Application crashes
 - No error handling for storage limit
 
-**Screenshots**: [Console error screenshot]
 
 **Workaround**: Clear local storage manually via DevTools
 
@@ -288,7 +283,7 @@ The bug lifecycle in Platypus QA Lab follows this flow:
 **Severity**: Low  
 **Priority**: P3  
 **Status**: Open  
-**Reported By**: Mobile Testing Team  
+**Reported By**: Andres Rodriguez Paz
 **Reported Date**: 2025-01-19  
 **Environment**: Chrome Mobile, Android 13
 
@@ -307,7 +302,6 @@ The bug lifecycle in Platypus QA Lab follows this flow:
 - Overlap with other elements
 - Difficult to read values
 
-**Screenshots**: [Mobile tooltip screenshot]
 
 **Workaround**: View on desktop
 
@@ -323,8 +317,8 @@ The bug lifecycle in Platypus QA Lab follows this flow:
 **Severity**: Medium  
 **Priority**: P2  
 **Status**: Open  
-**Reported By**: QA Team  
-**Reported Date**: 2025-01-21  
+**Reported By**: Andres Rodriguez Paz  
+**Reported Date**: 2025-11-20
 **Environment**: Chrome 120, Throttled 3G network
 
 **Steps to Reproduce**:
@@ -342,7 +336,6 @@ The bug lifecycle in Platypus QA Lab follows this flow:
 - No timeout handling
 - User doesn't know if request is processing or failed
 
-**Screenshots**: [Loading spinner screenshot]
 
 **Workaround**: Use faster network
 
@@ -359,8 +352,8 @@ The bug lifecycle in Platypus QA Lab follows this flow:
 **Severity**: High  
 **Priority**: P1  
 **Status**: Fixed  
-**Reported By**: QA Team  
-**Reported Date**: 2025-01-22  
+**Reported By**: Andres Rodriguez Paz  
+**Reported Date**: 2025-11-20  
 **Environment**: All browsers
 
 **Steps to Reproduce**:
@@ -377,7 +370,6 @@ The bug lifecycle in Platypus QA Lab follows this flow:
 - Stats remain unchanged until page refresh
 - Inconsistent state between bug list and stats
 
-**Screenshots**: [Stale stats screenshot]
 
 **Workaround**: Refresh page
 
@@ -457,5 +449,5 @@ The bug lifecycle in Platypus QA Lab follows this flow:
 
 ---
 
-**Last Updated**: January 2025
+**Last Updated**: November 2025
 
